@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    @apply bg-cream font-sans text-black antialiased;
+  }
+  ::selection {
+    background: #ffe600;
+    color: #000;
+  }
+  :focus-visible {
+    outline: 3px solid #000;
+    outline-offset: 2px;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #000 transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #000;
+    border: 2px solid #f4f0ea;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer components {
+  /* Tombol neobrutalism: border tebal, hard shadow, menekan saat diklik */
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 border-2 border-black bg-white px-3 py-1.5 text-sm font-bold text-black shadow-brutal-sm transition-[transform,box-shadow] duration-75;
+    @apply hover:-translate-x-px hover:-translate-y-px hover:shadow-brutal;
+    @apply active:translate-x-[2px] active:translate-y-[2px] active:shadow-none;
+    @apply disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:hover:translate-x-0 disabled:hover:translate-y-0;
+  }
+  .btn-sm {
+    @apply px-2 py-1 text-xs;
+  }
+  .btn-lemon {
+    @apply bg-lemon;
+  }
+  .btn-neon {
+    @apply bg-neon;
+  }
+  .btn-aqua {
+    @apply bg-aqua;
+  }
+  .btn-blaze {
+    @apply bg-blaze;
+  }
+
+  /* Markdown di dalam pesan */
+  .prose-neo {
+    @apply text-[15px] leading-relaxed;
+    overflow-wrap: anywhere;
+  }
+  .prose-neo > * + * {
+    @apply mt-3;
+  }
+  .prose-neo h1,
+  .prose-neo h2,
+  .prose-neo h3,
+  .prose-neo h4 {
+    @apply font-sans font-black leading-tight;
+  }
+  .prose-neo h1 {
+    @apply mt-5 text-2xl;
+  }
+  .prose-neo h2 {
+    @apply mt-5 text-xl;
+  }
+  .prose-neo h3 {
+    @apply mt-4 text-lg;
+  }
+  .prose-neo ul {
+    @apply list-disc pl-6;
+  }
+  .prose-neo ol {
+    @apply list-decimal pl-6;
+  }
+  .prose-neo li + li {
+    @apply mt-1;
+  }
+  .prose-neo blockquote {
+    @apply border-l-8 border-black bg-lemon px-4 py-2 font-medium;
+  }
+  .prose-neo blockquote > * + * {
+    @apply mt-2;
+  }
+  .prose-neo a {
+    @apply bg-neon/60 font-bold underline decoration-2 underline-offset-2 hover:bg-neon;
+  }
+  .prose-neo hr {
+    @apply my-4 border-t-4 border-black;
+  }
+  .prose-neo strong {
+    @apply font-extrabold;
+  }
+  .prose-neo code {
+    @apply border-2 border-black bg-cream px-1 font-mono text-[0.85em];
+  }
+  .prose-neo pre {
+    @apply overflow-auto border-2 border-black bg-white p-3 shadow-brutal-sm;
+  }
+  .prose-neo pre code {
+    @apply border-0 bg-transparent p-0;
+  }
+  .prose-neo .table-wrap {
+    @apply overflow-x-auto border-2 border-black bg-white shadow-brutal-sm;
+  }
+  .prose-neo table {
+    @apply w-full border-collapse text-sm;
+  }
+  .prose-neo th {
+    @apply border-2 border-black bg-aqua px-3 py-2 text-left font-extrabold;
+  }
+  .prose-neo td {
+    @apply border-2 border-black px-3 py-2 align-top;
+  }
+  .prose-neo img {
+    @apply max-w-full border-2 border-black;
+  }
+}
+
+/* Highlight.js: warna token dengan kontras tinggi di atas latar putih */
+.hljs {
+  color: #000;
+  background: transparent;
+}
+.hljs-comment,
+.hljs-quote {
+  color: #6b7280;
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-doctag {
+  color: #c2410c;
+  font-weight: 700;
+}
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute {
+  color: #047857;
+}
+.hljs-number,
+.hljs-literal,
+.hljs-bullet,
+.hljs-symbol {
+  color: #1d4ed8;
+}
+.hljs-title,
+.hljs-section,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: #7c3aed;
+  font-weight: 700;
+}
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-property {
+  color: #a16207;
+}
+.hljs-built_in,
+.hljs-type {
+  color: #0e7490;
+}
+.hljs-tag,
+.hljs-name {
+  color: #be123c;
+  font-weight: 700;
+}
+.hljs-deletion {
+  color: #b91c1c;
+  background: #fee2e2;
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
